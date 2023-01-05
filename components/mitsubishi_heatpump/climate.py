@@ -86,6 +86,9 @@ def to_code(config):
     serial = HARDWARE_UART_TO_SERIAL[config[CONF_HARDWARE_UART]]
     var = cg.new_Pvariable(config[CONF_ID], cg.RawExpression(f"&{serial}"))
 
+    cg.add(var.set_rx_pin(config[CONF_RX_PIN]))
+    cg.add(var.set_tx_pin(config[CONF_TX_PIN]))
+
     if CONF_BAUD_RATE in config:
         cg.add(var.set_baud_rate(config[CONF_BAUD_RATE]))
 
