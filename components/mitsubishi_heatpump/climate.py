@@ -27,6 +27,22 @@ MitsubishiHeatPump = cg.global_ns.class_(
 )
 
 
+def valid_rx_pin(rx__pin):
+    if CORE.is_esp8266:
+        return cv.one_of(-1, int=True)(rx__pin)
+    elif CORE.is_esp32:
+        return cv.one_of(-1, 3, 4, 5, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 32, 33, 34, 35, 36, 39, int=True)(rx__pin)
+    else:
+        raise NotImplementedError
+
+def valid_tx_pin(tx__pin):
+    if CORE.is_esp8266:
+        return cv.one_of(-1, int=True)(tx__pin)
+    elif CORE.is_esp32:
+        return cv.one_of(-1, 1, 4, 5, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 32, 33, int=True)(tx__pin)
+    else:
+        raise NotImplementedError
+
 def valid_uart(uart):
     if CORE.is_esp8266:
         uarts = ["UART0"]  # UART1 is tx-only
@@ -41,6 +57,8 @@ def valid_uart(uart):
 CONFIG_SCHEMA = climate.CLIMATE_SCHEMA.extend(
     {
         cv.GenerateID(): cv.declare_id(MitsubishiHeatPump),
+        cv.Optional(CONF_RX_PIN, default=-1): valid_rx_pin,
+        cv.Optional(CONF_TX_PIN, default=-1): valid_tx_pin,
         cv.Optional(CONF_HARDWARE_UART, default="UART0"): valid_uart,
         cv.Optional(CONF_BAUD_RATE): cv.positive_int,
         # If polling interval is greater than 9 seconds, the HeatPump library
