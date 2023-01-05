@@ -4,6 +4,8 @@ from esphome.components import climate
 from esphome.components.logger import HARDWARE_UART_TO_SERIAL
 from esphome.const import (
     CONF_ID,
+    CONF_RX_PIN,
+    CONF_TX_PIN,
     CONF_HARDWARE_UART,
     CONF_BAUD_RATE,
     CONF_UPDATE_INTERVAL,
