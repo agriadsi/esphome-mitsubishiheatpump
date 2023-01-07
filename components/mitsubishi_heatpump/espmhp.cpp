@@ -458,6 +458,22 @@ void MitsubishiHeatPump::setup() {
             TAG,
             "hw_serial(%p) is &Serial(%p)? %s",
             this->get_hw_serial_(),
+            &Serial,
+            YESNO(this->get_hw_serial_() == &Serial)
+    );
+
+    ESP_LOGCONFIG(
+            TAG,
+            "hw_serial(%p) is &Serial1(%p)? %s",
+            this->get_hw_serial_(),
+            &Serial1,
+            YESNO(this->get_hw_serial_() == &Serial1)
+    );
+
+    ESP_LOGCONFIG(
+            TAG,
+            "hw_serial(%p) is &Serial2(%p)? %s",
+            this->get_hw_serial_(),
             &Serial2,
             YESNO(this->get_hw_serial_() == &Serial2)
     );
