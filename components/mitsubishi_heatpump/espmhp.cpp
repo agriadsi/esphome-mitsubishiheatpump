@@ -462,6 +462,7 @@ void MitsubishiHeatPump::setup() {
             YESNO(this->get_hw_serial_() == &Serial)
     );
 
+#ifdef USE_ESP32
     ESP_LOGCONFIG(
             TAG,
             "hw_serial(%p) is &Serial1(%p)? %s",
@@ -477,6 +478,7 @@ void MitsubishiHeatPump::setup() {
             &Serial2,
             YESNO(this->get_hw_serial_() == &Serial2)
     );
+#endif
 
     ESP_LOGCONFIG(TAG, "Calling hp->connect(%p, %d, %d, %d)", this->get_hw_serial_(), this->baud_, this->rx_pin_, this->tx_pin_);
 
