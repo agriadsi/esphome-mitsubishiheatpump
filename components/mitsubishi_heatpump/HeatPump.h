@@ -17,12 +17,13 @@
 #define __HeatPump_H__
 #include <stdint.h>
 #include <math.h>
+/*
 #include <HardwareSerial.h>
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #else
 #include "WProgram.h"
-#endif
+#endif*/
 
 /* 
  * Callback function definitions. Code differs for the ESP8266 platform, which requires the functional library.
