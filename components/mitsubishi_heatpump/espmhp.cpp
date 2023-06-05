@@ -17,6 +17,8 @@
  * - ESPHome 1.18.0 or greater
  */
 
+#include "HeatPumpIDF.h"
+
 #include "espmhp.h"
 using namespace esphome;
 
