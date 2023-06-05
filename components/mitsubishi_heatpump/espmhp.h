@@ -20,7 +20,7 @@
 #include "esphome.h"
 #include "esphome/core/preferences.h"
 
-#include "HeatPump.h"
+#include "HeatPumpIDF.h"
 using namespace esphome;
 
 #ifndef ESPMHP_H
